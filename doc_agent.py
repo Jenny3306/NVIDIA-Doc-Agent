@@ -43,7 +43,7 @@ while True:
     user_input = input("Your question: ").strip()
 
     if user_input.lower() == "quit":
-        print("Goodbye!")
+        print("Goodbye! Great work today.")
         break
 
     if not user_input:
