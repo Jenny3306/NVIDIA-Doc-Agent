@@ -13,8 +13,12 @@ client = OpenAI(
     api_key=os.getenv("NVIDIA_API_KEY")
 )
 
+# NEW — fetches fresh connection every query
 db_client = chromadb.PersistentClient(path="./chroma_db")
-collection = db_client.get_or_create_collection(name="nvidia_docs")
+
+def get_collection():
+    """Always fetch a fresh collection reference."""
+    return db_client.get_or_create_collection(name="nvidia_docs")
 
 # ── Node 1: Router ──────────────────────────────────────────
 def router_node(state: AgentState) -> AgentState:
@@ -63,19 +67,19 @@ def retriever_node(state: AgentState) -> AgentState:
     )
     query_embedding = embedding_response.data[0].embedding
     
-    # Search with distances to measure confidence
+    # Get fresh collection reference every time
+    collection = get_collection()
+    
     results = collection.query(
         query_embeddings=[query_embedding],
-        n_results=3,
+        n_results=5,
         include=["documents", "distances"]
     )
     
     chunks = results["documents"][0]
     distances = results["distances"][0]
     
-    # Convert distance to confidence (lower distance = higher confidence)
     avg_distance = sum(distances) / len(distances)
-    # ChromaDB returns L2 distances, scale them properly
     confidence = max(0, 1 - (avg_distance / 2))
     
     print(f"[Retriever] Found {len(chunks)} chunks | confidence: {confidence:.2f}")
@@ -119,17 +123,24 @@ Document context:
     messages.extend(chat_history[-6:])  # Last 3 exchanges
     messages.append({"role": "user", "content": question})
     
-    response = client.chat.completions.create(
-        model="nvidia/nemotron-3-nano-30b-a3b",
-        messages=messages,
-        max_tokens=1024
-    )
-    
-    answer = response.choices[0].message.content or "I had trouble generating a response."
-    
-    print(f"[Generator] Answer generated ({len(answer)} chars)")
-    
-    return {**state, "answer": answer}
+    try:
+        response = client.chat.completions.create(
+            model="nvidia/nemotron-3-nano-30b-a3b",
+            messages=messages,
+            max_tokens=1024
+        )
+        
+        answer = response.choices[0].message.content
+        
+        if not answer or not answer.strip():
+            return {**state, "answer": "I had trouble generating a response. Please try rephrasing."}
+        
+        print(f"[Generator] Answer generated ({len(answer)} chars)")
+        return {**state, "answer": answer}
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return {**state, "answer": "An error occurred. Please try again."}
 
 
 # ── Node 4: Meta Handler ─────────────────────────────────────

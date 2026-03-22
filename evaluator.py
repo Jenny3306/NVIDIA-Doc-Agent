@@ -30,7 +30,7 @@ EVAL_SET = [
         "should_answer": True
     },
     {
-        "question": "Who created the Falcon models?",
+        "question": "Who built the Falcon language models?",
         "expected_keywords": ["technology innovation institute"],
         "should_answer": True
     },
