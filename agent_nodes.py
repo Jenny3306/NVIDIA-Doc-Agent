@@ -111,13 +111,17 @@ def generator_node(state: AgentState) -> AgentState:
                                    for i, chunk in enumerate(chunks)])
     
     system_prompt = f"""You are a precise document assistant powered by NVIDIA Nemotron.
-Answer ONLY based on the context provided below.
-Always cite which chunk your answer comes from.
-If the answer is not in the context, say: 'I could not find this in the document.'
-Never make up information.
+    Your answers must be:
+    - Direct and concise — state the answer immediately
+    - Factually grounded — only use information from the context below
+    - Well cited — always mention which Chunk your answer comes from
+    - Complete — include all relevant details from the context
 
-Document context:
-{context}"""
+    If the answer is not in the context below, say exactly:
+    'I could not find this in the document.'
+
+    Document context:
+    {context}"""
 
     messages = [{"role": "system", "content": system_prompt}]
     messages.extend(chat_history[-6:])  # Last 3 exchanges
