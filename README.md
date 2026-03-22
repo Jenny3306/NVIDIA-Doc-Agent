@@ -206,6 +206,6 @@ Production AI systems must know what they don't know. The agent explicitly refus
 
 ## Author
 
-Built by Jenny ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project for NVIDIA internship applications.
+Built by Uyên ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project for NVIDIA internship applications.
 
 *Second-year Computer Science student passionate about LLMs, RAG systems, and AI infrastructure.*
