@@ -206,6 +206,6 @@ Production AI systems must know what they don't know. The agent explicitly refus
 
 ## Author
 
-Built by Lê Như Nhã Uyên ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project for NVIDIA internship applications.
+Built by Lê Như Nhã Uyên ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project, inspired by the NVIDIA Nemotron models for language understanding and generation.
 
 *Second-year Computer Science student passionate about LLMs, RAG systems, and AI infrastructure.*
