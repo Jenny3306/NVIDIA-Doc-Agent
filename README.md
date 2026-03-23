@@ -105,7 +105,7 @@ Tested chunk sizes of 300, 500, and 800 tokens:
 
 ## Project Structure
 ```
-nvidia-doc-agent/
+doc-qa-agent/
 ├── app.py                  # Streamlit web UI
 ├── agent_state.py          # LangGraph state definition
 ├── agent_nodes.py          # Agent decision nodes (Router, Retriever, Generator, Meta, Clarifier)
@@ -130,8 +130,8 @@ nvidia-doc-agent/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/Jenny3306/NVIDIA-Doc-Agent.git
-cd NVIDIA-Doc-Agent
+git clone https://github.com/Jenny3306/Doc-QA-Agent.git
+cd Doc-QA-Agent
 ```
 
 ### 2. Set up environment
