@@ -105,7 +105,7 @@ Tested chunk sizes of 300, 500, and 800 tokens:
 
 ## Project Structure
 ```
-doc-qa-agent/
+nvidia-doc-agent/
 ├── app.py                  # Streamlit web UI
 ├── agent_state.py          # LangGraph state definition
 ├── agent_nodes.py          # Agent decision nodes (Router, Retriever, Generator, Meta, Clarifier)
