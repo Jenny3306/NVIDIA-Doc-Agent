@@ -1,4 +1,4 @@
-# NVIDIA Document Q&A Agent
+# Document Q&A Agent
 
 An intelligent document assistant powered by **NVIDIA Nemotron 3 Nano** and **LangGraph** that answers questions from any PDF with source citations, conversation memory, and honest fallback behavior.
 
