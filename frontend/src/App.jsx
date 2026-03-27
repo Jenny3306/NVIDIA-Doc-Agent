@@ -74,7 +74,7 @@ function UploadProgress({ progress, filename, totalChunks }) {
 }
 
 // ── Sidebar ───────────────────────────────────────────────────
-function Sidebar({ onUpload, docInfo, onNewChat }) {
+function Sidebar({ onUpload, docInfo, onNewChat, onBackHome }) {
   const [dragging, setDragging]     = useState(false)
   const [uploading, setUploading]   = useState(false)
   const [progress, setProgress]     = useState(0)
@@ -126,7 +126,7 @@ function Sidebar({ onUpload, docInfo, onNewChat }) {
       {/* Logo */}
       <div style={{ color: GRN, fontSize: 15, fontWeight: 700,
                     letterSpacing: "-0.3px", paddingBottom: 4 }}>
-        Document QA Agent
+        Document Q&A Agent
       </div>
       <div style={{ color: "#6b7260", fontSize: 10, textTransform: "uppercase",
                     letterSpacing: "1.5px", paddingBottom: 12 }}>
@@ -223,17 +223,6 @@ function Sidebar({ onUpload, docInfo, onNewChat }) {
           onMouseOut={e => e.target.style.opacity = "1"}
           >
             ＋ New conversation
-          </button>
-
-          <button onClick={onBackHome} style={{
-            width: "100%", background: "transparent",
-            color: t.textMid, border: `1px solid ${t.border}44`,
-            borderRadius: 12, padding: "8px 16px", marginBottom: 24,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            gap: 8, cursor: "pointer", fontSize: 12, fontWeight: 600,
-            transition: "all 0.2s"
-          }}>
-            ← Back to home
           </button>
         </>
       )}
