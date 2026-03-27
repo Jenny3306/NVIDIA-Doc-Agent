@@ -267,6 +267,6 @@ Streamlit is great for prototyping but has significant UI limitations. Separatin
 
 ## Author
 
-Built by Lê Như Nhã Uyên ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project for NVIDIA internship applications.
+Built by Lê Như Nhã Uyên ([@Jenny3306](https://github.com/Jenny3306)) as a portfolio project.
 
 *Second-year Computer Science student passionate about LLMs, RAG systems, and AI infrastructure.*
